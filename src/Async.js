@@ -149,7 +149,11 @@ export default class Async extends Component {
 			onInputChange(inputValue);
 		}
 
-		return this.loadOptions(inputValue.toLowerCase());
+		if (ignoreCase) {
+			return this.loadOptions(inputValue.toLowerCase());
+		}
+
+		return this.loadOptions(inputValue);
 	}
 
 	inputValue() {
