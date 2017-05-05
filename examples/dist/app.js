@@ -199,7 +199,7 @@ var Contributors = _react2['default'].createClass({
 				{ className: 'section-heading' },
 				this.props.label
 			),
-			_react2['default'].createElement(_reactSelect2['default'].Async, { multi: this.state.multi, value: this.state.value, onChange: this.onChange, onValueClick: this.gotoContributor, valueKey: 'github', labelKey: 'name', loadOptions: this.getContributors }),
+			_react2['default'].createElement(_reactSelect2['default'].Async, { ignoreCase: true, multi: this.state.multi, value: this.state.value, onChange: this.onChange, onValueClick: this.gotoContributor, valueKey: 'github', labelKey: 'name', loadOptions: this.getContributors }),
 			_react2['default'].createElement(
 				'div',
 				{ className: 'checkbox-list' },

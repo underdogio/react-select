@@ -82,9 +82,12 @@ export default class Async extends Component {
 		this.setState({ options: [] });
 	}
 
-	loadOptions (inputValue) {
-		const { loadOptions } = this.props;
+	loadOptions (originalInputValue) {
+		const { ignoreCase, loadOptions } = this.props;
 		const cache = this._cache;
+
+		// Normalize input to lowercase if ignoreCase prop is true
+		const inputValue = ignoreCase ? originalInputValue.toLowerCase() : originalInputValue;
 
 		if (
 			cache &&
@@ -134,11 +137,12 @@ export default class Async extends Component {
 			});
 		}
 
-		return inputValue;
+		// Return the original input value
+		return originalInputValue;
 	}
 
 	_onInputChange (inputValue) {
-		const { ignoreAccents, ignoreCase, onInputChange } = this.props;
+		const { ignoreAccents, onInputChange } = this.props;
 
 		if (ignoreAccents) {
 			inputValue = stripDiacritics(inputValue);
@@ -147,10 +151,6 @@ export default class Async extends Component {
 
 		if (onInputChange) {
 			onInputChange(inputValue);
-		}
-
-		if (ignoreCase) {
-			return this.loadOptions(inputValue.toLowerCase());
 		}
 
 		return this.loadOptions(inputValue);

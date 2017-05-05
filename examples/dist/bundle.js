@@ -112,12 +112,17 @@ var Async = (function (_Component) {
 		}
 	}, {
 		key: 'loadOptions',
-		value: function loadOptions(inputValue) {
+		value: function loadOptions(originalInputValue) {
 			var _this2 = this;
 
-			var loadOptions = this.props.loadOptions;
+			var _props = this.props;
+			var ignoreCase = _props.ignoreCase;
+			var loadOptions = _props.loadOptions;
 
 			var cache = this._cache;
+
+			// Normalize input to lowercase if ignoreCase prop is true
+			var inputValue = ignoreCase ? originalInputValue.toLowerCase() : originalInputValue;
 
 			if (cache && cache.hasOwnProperty(inputValue)) {
 				this.setState({
@@ -162,15 +167,15 @@ var Async = (function (_Component) {
 				});
 			}
 
-			return inputValue;
+			// Return the original input value
+			return originalInputValue;
 		}
 	}, {
 		key: '_onInputChange',
 		value: function _onInputChange(inputValue) {
-			var _props = this.props;
-			var ignoreAccents = _props.ignoreAccents;
-			var ignoreCase = _props.ignoreCase;
-			var onInputChange = _props.onInputChange;
+			var _props2 = this.props;
+			var ignoreAccents = _props2.ignoreAccents;
+			var onInputChange = _props2.onInputChange;
 
 			if (ignoreAccents) {
 				inputValue = (0, _utilsStripDiacritics2['default'])(inputValue);
@@ -178,10 +183,6 @@ var Async = (function (_Component) {
 
 			if (onInputChange) {
 				onInputChange(inputValue);
-			}
-
-			if (ignoreCase) {
-				return this.loadOptions(inputValue.toLowerCase());
 			}
 
 			return this.loadOptions(inputValue);
@@ -197,10 +198,10 @@ var Async = (function (_Component) {
 	}, {
 		key: 'noResultsText',
 		value: function noResultsText() {
-			var _props2 = this.props;
-			var loadingPlaceholder = _props2.loadingPlaceholder;
-			var noResultsText = _props2.noResultsText;
-			var searchPromptText = _props2.searchPromptText;
+			var _props3 = this.props;
+			var loadingPlaceholder = _props3.loadingPlaceholder;
+			var noResultsText = _props3.noResultsText;
+			var searchPromptText = _props3.searchPromptText;
 			var isLoading = this.state.isLoading;
 
 			var inputValue = this.inputValue();
@@ -223,10 +224,10 @@ var Async = (function (_Component) {
 		value: function render() {
 			var _this3 = this;
 
-			var _props3 = this.props;
-			var children = _props3.children;
-			var loadingPlaceholder = _props3.loadingPlaceholder;
-			var placeholder = _props3.placeholder;
+			var _props4 = this.props;
+			var children = _props4.children;
+			var loadingPlaceholder = _props4.loadingPlaceholder;
+			var placeholder = _props4.placeholder;
 			var _state = this.state;
 			var isLoading = _state.isLoading;
 			var options = _state.options;
