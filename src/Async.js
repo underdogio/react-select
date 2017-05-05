@@ -124,11 +124,7 @@ export default class Async extends Component {
 			inputValue = stripDiacritics(inputValue);
 		}
 
-		if (ignoreCase) {
-			inputValue = inputValue.toLowerCase();
-		}
-
-		return this.loadOptions(inputValue);
+		return this.loadOptions(inputValue.toLowerCase());
 	}
 
 	render () {
