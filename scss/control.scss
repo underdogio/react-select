@@ -171,8 +171,10 @@
 .Select-loading-zone {
 	cursor: pointer;
 	display: table-cell;
-	position: relative;
+	position: absolute;
+	right: 4px;
 	text-align: center;
+	top: calc(50% - 4px);
 	vertical-align: middle;
 	width: $select-loading-size;
 }
