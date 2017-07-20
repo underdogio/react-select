@@ -185,6 +185,10 @@
 
 
 // the little cross that clears the field
+.Select-clear-zone,
+.Select-arrow-zone {
+	padding: 0.1em;
+}
 
 .Select-clear-zone {
 	@include animation( Select-animation-fadeIn 200ms );
@@ -193,6 +197,7 @@
 	display: table-cell;
 	position: relative;
 	text-align: center;
+  top: 3px;
 	vertical-align: middle;
 	width: $select-clear-width;
 
