@@ -9,6 +9,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AutosizeInput from 'react-input-autosize';
 import classNames from 'classnames';
+import createClass from 'create-react-class';
 
 import defaultArrowRenderer from './utils/defaultArrowRenderer';
 import defaultFilterOptions from './utils/defaultFilterOptions';
@@ -41,7 +42,7 @@ const stringOrNode = PropTypes.oneOfType([
 
 let instanceId = 1;
 
-const Select = React.createClass({
+const Select = createClass({
 
 	displayName: 'Select',
 
